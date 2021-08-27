@@ -30,3 +30,22 @@ variable "private_subnet_cidr_blocks" {
   default     = ["10.0.0.0/24", "10.0.4.0/24"]
   description = "CIDR block range for the private subnets"
 }
+variable "environment" {
+  type        = string
+  description = "Application enviroment"
+}
+variable "security_group_lb_name" {
+  type        = string
+  default     = "alb-sg"
+  description = "Load Balancer security group name"
+}
+variable "security_group_lb_description" {
+  type        = string
+  default     = "controls access to the ALB"
+  description = "Load Balancer security group description"
+}
+variable "security_group_ecs_tasks_name" {
+  type        = string
+  default     = "ecs-tasks-sg"
+  description = "ECS Tasks security group name"
+}
