@@ -11,3 +11,17 @@ variable "region" {
   description = "aws region to deploy to"
   type        = string
 }
+variable "app_name" {
+  description = "The name of the app"
+  type = string
+}
+
+variable "environment" {
+  description = "Applicaiton environment"
+  type = string
+}
+
+variable "app_port" {
+  description = "Application port"
+  type = number
+}
