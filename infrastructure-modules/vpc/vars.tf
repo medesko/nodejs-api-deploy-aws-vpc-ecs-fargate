@@ -54,3 +54,15 @@ variable "security_group_ecs_tasks_description" {
   default     = "allow inbound access from the ECS ALB only"
   description = "ECS tasks security group description"
 }
+variable "app_port" {
+  type        = string
+  description = "app port"
+}
+variable "region" {
+  type = string 
+  description = "The AWS region where resources have been deployed"
+}
+variable "availability_zones" {
+  type  = list(string)
+  description = "List of availability zones for the selected region"
+}
