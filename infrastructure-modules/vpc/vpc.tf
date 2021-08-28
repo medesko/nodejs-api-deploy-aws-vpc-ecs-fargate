@@ -9,7 +9,6 @@ resource "aws_vpc" "custom_vpc" {
 }
 
 ### ------------VPC Network Setup ----------------------###
-
 # Create the private subnets
 resource "aws_subnet" "private_subnet" {
   count = var.number_of_private_subnets
@@ -22,7 +21,7 @@ resource "aws_subnet" "private_subnet" {
   }
 }
 
-### Security Group Setup
+### ------------ Security Group Setup ---------------------###
 
 # ALB Security group
 resource "aws_security_group" "lb" {
