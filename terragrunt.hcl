@@ -6,10 +6,17 @@ remote_state {
   }
   config = {
     bucket = "node-terraform-up-and-running-state"
-
     key = "${path_relative_to_include()}/terraform.tfstate"
-    region = "eu-west-3"
+    region  = local.local_inputs.region,
+    profile = local.local_inputs.profile
     encrypt = true
     dynamodb_table = "node-terraform-up-and-running-locks-table"
   }
 }
+
+locals {
+  local_inputs  = yamldecode(file("${get_terragrunt_dir()}/inputs.yml"))
+  global_inputs = yamldecode(file("${get_terragrunt_dir()}/inputs.yml"))
+}
+
+inputs = merge(local.global_inputs, local.local_inputs)

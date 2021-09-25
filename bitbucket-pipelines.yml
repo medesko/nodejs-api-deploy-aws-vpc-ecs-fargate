@@ -8,13 +8,13 @@ definitions:
         - step: &terragrunt
             name: run terragrunt
             script:
-                - terragrunt init
+                - terragrunt init --terragrunt-source-update
                 - terragrunt validate-all
 
         - step: &plan-and-push
             name: run terragrunt
             script:
-                - terragrunt init
+                - terragrunt init --terragrunt-source-update
                 - terragrunt validate-all
                 - terragrunt plan
                 - terragrunt apply -input=false -auto-approve
