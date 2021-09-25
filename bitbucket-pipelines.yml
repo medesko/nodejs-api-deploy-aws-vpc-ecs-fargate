@@ -1,0 +1,28 @@
+image: alpine/terragrunt:latest
+definitions:
+    steps:
+        - step: &secrets-scan
+            name: Security Scan
+            script:
+                - pipe: atlassian/git-secrets-scan:0.4.3
+        - step: &terragrunt
+            name: run terragrunt
+            script:
+                - terragrunt init
+                - terragrunt validate-all
+
+        - step: &plan-and-push
+            name: run terragrunt
+            script:
+                - terragrunt init
+                - terragrunt validate-all
+                - terragrunt plan
+                - terragrunt apply -input=false -auto-approve
+pipelines:
+    default:
+        - step: *terragrunt
+    branches:
+        develop:
+            - step:  *plan-and-push
+        master:
+            - step:  *plan-and-push

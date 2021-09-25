@@ -49,11 +49,11 @@ variable "security_group_ecs_tasks_name" {
   default     = "ecs-tasks-sg"
   description = "ECS Tasks security group name"
 }
-variable "security_group_ecs_tasks_description" {
-  type        = string
-  default     = "allow inbound access from the ECS ALB only"
-  description = "ECS tasks security group description"
-}
+# variable "security_group_ecs_tasks_description" {
+#   type        = string
+#   default     = "allow inbound access from the ECS ALB only"
+#   description = "ECS tasks security group description"
+# }
 variable "app_port" {
   type        = string
   description = "app port"
