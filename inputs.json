@@ -1,0 +1,10 @@
+{
+  "profile": "default",
+  "region": "eu-west-3",
+  "app_name": "labs-node",
+  "app_count": 1,
+  "availability_zones": ["eu-west-3a", "eu-west-3b", "eu-west-3b"],
+  "vpc_cidr_block": "10.0.0.0/16",
+  "number_of_private_subnets": 3,
+  "private_subnet_cidr_blocks" : ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+}

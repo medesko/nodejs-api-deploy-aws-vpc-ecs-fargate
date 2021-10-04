@@ -5,7 +5,7 @@ remote_state {
     if_exists = "overwrite_terragrunt"
   }
   config = {
-    bucket = "node-terraform-up-and-running-state"
+    bucket = "node-terraform-up-and-running-state-${local.local_inputs.environment}"
     key = "${path_relative_to_include()}/terraform.tfstate"
     region  = local.local_inputs.region,
     profile = local.local_inputs.profile
@@ -15,8 +15,8 @@ remote_state {
 }
 
 locals {
-  local_inputs  = yamldecode(file("${get_terragrunt_dir()}/inputs.yml"))
-  global_inputs = yamldecode(file("${get_terragrunt_dir()}/inputs.yml"))
+  local_inputs  = jsondecode(file("${get_terragrunt_dir()}/inputs.json"))
+  global_inputs  = jsondecode(file("${get_parent_terragrunt_dir()}/inputs.json"))
 }
 
 inputs = merge(local.global_inputs, local.local_inputs)
